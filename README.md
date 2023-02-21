@@ -43,5 +43,6 @@ Docker Useful CMDs :
 	docker info								: infos about containers, images, CPU usages, memory, ...
 	docker inspect --format='{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_id> : gives contaier ip address
 	docker container stop <name_or_containerName> : stop a runing container
-						-d in back  run in browser on port 80
+
+						-d in back  run on port 80 give container n1 name
 	docker container run --detach --publish 80:80 --name n1 nginx
