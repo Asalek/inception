@@ -1,21 +1,21 @@
-YAML :
+## YAML :
 	(YAML Ain't Markup Language) is a human readable data serialization format, it's often used for configuration files and data exchange between programming languages as it's more readable and maintainable than other data serialization formats, sch as JSON, XML. as it supported by many programming languages, tools (Docker, Kubernetes, ...) and frameworks.
 
 
-Alpine or Debian :
+## Alpine or Debian :
 	Alpine is designed to be a lightweight distribution with a small footprint. it uses the musl C library. Musl is designed to be lightweight and fast which makes Alpine a good choice for running containerized applications or other situations where small size and speed are important. its default package manager is apk.
 	Debian is known for its stability and reliability it uses the common glibc(short for GNU C library) library with a large number of packages, and its default package manager is apt.
 
-NGINX :
+## NGINX :
 	NGINX is a Web Server that handle HTTP requests and distribute traffic across multiple servers. High performance, reliable and scalable. its provides also many features such as SSL/TLS encryption, URL rewriting, ...
 
-Daemon :
+## Daemon :
 	The docker daemon listens for docker api requests and manages Docker object such as images, containers, networks, and volumes.
 
-NameSpaces :
+## NameSpaces :
 	Docker uses namespaces to provide a level of isolation between containers and the host system. Namespaces are a feature of the Linux kernel that allow for multiple independent instances of a global resource to exist, each with its own isolated view of the system
 
-	The different namespaces used by Docker are as follows:
+- The different namespaces used by Docker are as follows:
 
 1_PID namespace: This namespace isolates process IDs. Each container has its own PID namespace, which means that the processes running inside a container can only see and interact with other processes in the same namespace.
 
@@ -31,7 +31,7 @@ NameSpaces :
 
 By isolating these different aspects of the system, Docker can provide a high level of containerization and security. Each container is essentially running in its own isolated environment, with its own view of the system's resources. This allows Docker to provide a flexible and powerful platform for running containerized applications, while still maintaining a high level of isolation and security.
 
-Docker Useful CMDs :
+## Docker Useful CMDs :
 	docker pull <img_name>					: pull a container, by default will oull it from docker-hub
 	docker run <img_name>					: pull and run if img not found, run if founded
 	docker container ls -a 					: show all containers
