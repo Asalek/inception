@@ -9,7 +9,7 @@ Alpine or Debian :
 NGINX :
 	NGINX is a Web Server that handle HTTP requests and distribute traffic across multiple servers. High performance, reliable and scalable. its provides also many features such as SSL/TLS encryption, URL rewriting, ...
 
-Docker Daemon :
+Daemon :
 	The docker daemon listens for docker api requests and manages Docker object such as images, containers, networks, and volumes.
 
 NameSpaces :
@@ -44,5 +44,8 @@ Docker Useful CMDs :
 	docker inspect --format='{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_id> : gives contaier ip address
 	docker container stop <name_or_containerName> : stop a runing container
 
-						-d in back  run on port 80 give container n1 name
+					//	-d in back, -p run on port 80 give container n1 name`
 	docker container run --detach --publish 80:80 --name n1 nginx
+	docker exec -it <container_name> bash	: run bash in a running container
+	docker history <container_name>			: show container layers (commands)
+	docker tag <container_name> <account_name/tag_name>	: give your container a tag nam (docker tag redis asalek/redis:dev) if dev removed latest is default
