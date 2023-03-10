@@ -36,16 +36,19 @@ By isolating these different aspects of the system, Docker can provide a high le
 	docker run <img_name>					: pull and run if img not found, run if founded
 	docker container ls -a 					: show all containers
 	docker images
-	docker rm <container_id>				: delete a container
-	docker image rm <img_name or img_id>	: delete an image
 	docker container run -d <img_name>		: run container in background
 	docker inspect <img_name>				: informations about an image
 	docker info								: infos about containers, images, CPU usages, memory, ...
-	docker inspect --format='{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_id> : gives contaier ip address
-	docker container stop <name_or_containerName> : stop a runing container
+	docker inspect --format='{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_id> : gives container ip address
+	docker container stop <name_or_containerName> : stop a running container
 
 					//	-d in back, -p run on port 80 give container n1 name`
 	docker container run --detach --publish 80:80 --name n1 nginx
 	docker exec -it <container_name> bash	: run bash in a running container
 	docker history <container_name>			: show container layers (commands)
 	docker tag <container_name> <account_name/tag_name>	: give your container a tag nam (docker tag redis asalek/redis:dev) if dev removed latest is default
+	docker rm <container_id>				: delete a container
+	docker image rm <img_name or img_id>	: delete an image
+	docker rm $(docker ps -aq)				: delete all containers
+	docker rmi -f $(docker images -aq)		: delete all images
+	docker build --tag <tag_name> .			: build an image with tag
