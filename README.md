@@ -31,6 +31,10 @@
 
 By isolating these different aspects of the system, Docker can provide a high level of containerization and security. Each container is essentially running in its own isolated environment, with its own view of the system's resources. This allows Docker to provide a flexible and powerful platform for running containerized applications, while still maintaining a high level of isolation and security.
 
+## SSL / TLS :
+	<strong>SSL</strong> (Secure Sockets Layer) is a security protocol that provides secure communication over the internet. It was developed to provide a secure connection between a client and a server, ensuring that sensitive information such as passwords, credit card numbers, and other personal data can be transmitted securely
+	<strong>TLS</strong> (Transport Layer Security) is a cryptographic protocol that provides secure communication over the internet. It is the successor to SSL (Secure Sockets Layer) and is used to provide a secure connection between a client and a server.
+
 ## Docker Useful CMDs :
 	docker pull <img_name>					: pull a container, by default will oull it from docker-hub
 	docker run <img_name>					: pull and run if img not found, run if founded
@@ -52,3 +56,5 @@ By isolating these different aspects of the system, Docker can provide a high le
 	docker rm $(docker ps -aq)				: delete all containers
 	docker rmi -f $(docker images -aq)		: delete all images
 	docker build --tag <tag_name> .			: build an image with tag
+	docker exec -it <container_name> bash	: run a container and return bash as CLI
+	docker system prune -a					: delete all containers and images
