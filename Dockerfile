@@ -1,13 +1,15 @@
 #base image : alpine is used for its small size and fast performance
-FROM alpine
+FROM debian:buster
 
 #alpine package manager
-RUN apk add nginx && \
-	apk add openssl
-RUN openssl req -x509 -nodes -days 365	-newkey rsa:2048 \
+RUN apt-get update -y && apt upgrade -y && \
+	apt-get install nginx -y && \
+	apt-get install openssl -y && \
+	openssl req -x509 -nodes -days 365	-newkey rsa:2048 \
 	-keyout /etc/ssl/private/asalek-prv.key \ 
 	-out /etc/ssl/certs/asalek-cer.crt \
 	-subj "/CN=asalek.42.fr"
+
 # openssl	: creating and managing OpenSSL certificates, keys, and other files.
 # req		: request a certificate 
 # x509		: self-signed certificate will be created, certificate signing request (CSR)
@@ -17,7 +19,7 @@ RUN openssl req -x509 -nodes -days 365	-newkey rsa:2048 \
 # subj		: define the subject of certificate with Common Name (*)
 
 # EXPOSE 443
-CMD [ "/usr/sbin/nginx"]
+CMD [ "/usr/sbin/nginx", "-g", "daemon off;" ]
 
 
 #SSL : secure sockets layer
