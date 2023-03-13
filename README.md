@@ -34,6 +34,22 @@ By isolating these different aspects of the system, Docker can provide a high le
 ## SSL / TLS :
 	<strong>SSL</strong> (Secure Sockets Layer) is a security protocol that provides secure communication over the internet. It was developed to provide a secure connection between a client and a server, ensuring that sensitive information such as passwords, credit card numbers, and other personal data can be transmitted securely
 	<strong>TLS</strong> (Transport Layer Security) is a cryptographic protocol that provides secure communication over the internet. It is the successor to SSL (Secure Sockets Layer) and is used to provide a secure connection between a client and a server.
+## PHP-FPM :
+	PHP-FPM stands for PHP FastCGI Process Manager, It is a PHP extension that allows PHP to run as a FastCGI process and manage the processes dynamically, handling requests for PHP scripts from a web server.
+	When PHP is run as a FastCGI process, it is separated from the web server and can run as a standalone process, enabling better performance and resource usage. It also provides a number of features, such as process management, process priority, and logging.
+## FAstCGI :
+	FastCGI (Fast Common Gateway Interface) is a protocol that allows a web server to interface with a standalone application or script that handles HTTP requests.
+
+## Docker for Linux
+
+```
+    sudo apt update
+    sudo apt install docker.io -y
+    sudo apt install docker -y
+    sudo systemctl enable docker --now
+	sudo systemctl status docker
+    docker --version
+```
 
 ## Docker Useful CMDs :
 	docker pull <img_name>					: pull a container, by default will oull it from docker-hub
