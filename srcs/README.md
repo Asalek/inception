@@ -74,3 +74,6 @@ By isolating these different aspects of the system, Docker can provide a high le
 	docker build --tag <tag_name> .			: build an image with tag
 	docker exec -it <container_name> bash	: run a container and return bash as CLI
 	docker system prune -a					: delete all containers and images
+	docker volume ls						: list all valume on the machine
+	docker run -v marivm:/var/lib/mysql mariadb: create/bind a volume for mariadb
+	docker volume create maria-vol			: create new volume
