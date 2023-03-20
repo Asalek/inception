@@ -10,7 +10,7 @@ RUN apt-get update -y && apt upgrade -y && \
 	-out /etc/ssl/certs/asalek-cer.crt \
 	-subj "/CN=asalek.42.fr"
 
-COPY ./x.conf /etc/nginx/sites-available/default
+COPY ./conf/x.conf /etc/nginx/sites-available/default
 
 # openssl	: creating and managing OpenSSL certificates, keys, and other files.
 # req		: request a certificate 
@@ -26,3 +26,5 @@ CMD [ "/usr/sbin/nginx", "-g", "daemon off;" ]
 
 #SSL : secure sockets layer
 #TLS : transport layer security
+
+#docker run -p 443:443 --name ngin ngin
