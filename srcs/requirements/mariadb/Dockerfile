@@ -6,6 +6,6 @@ RUN apk update && \
 
 # RUN apt-get update && \
 # 	apt-get install mariadb-server mariadb-client -y
-CMD mariadb --version
+CMD ls -alR /etc
 
 # docker run -e MARIADB_ROOT_PASSWORD=123 mariadb
