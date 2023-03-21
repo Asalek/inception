@@ -77,3 +77,4 @@ By isolating these different aspects of the system, Docker can provide a high le
 	docker volume ls						: list all valume on the machine
 	docker run -v marivm:/var/lib/mysql mariadb: create/bind a volume for mariadb
 	docker volume create maria-vol			: create new volume
+	docker-compose down --rmi all			: clear docker-compose cache
