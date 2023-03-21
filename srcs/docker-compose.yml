@@ -9,3 +9,20 @@ services:
     restart: always
     env_file:
       - .env
+    # healthcheck:
+    #   test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 3
+  nginx_asalek:
+    build:
+      context: ./requirements/nginx
+      dockerfile: Dockerfile
+    image: nginx
+    restart: always
+    depends_on:
+      - mariadb_asalek
+        # condition: service_healthy
+
+  #restart : no always on-failure unless-stopped
+  
