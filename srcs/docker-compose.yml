@@ -1,1 +1,11 @@
-version: '3.8'
+version: '3.3'
+
+services:
+  mariadb_asalek:
+    build:
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
+    image: mariadb
+    restart: always
+    env_file:
+      - .env
