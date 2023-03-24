@@ -76,7 +76,16 @@ By isolating these different aspects of the system, Docker can provide a high le
 	docker system prune -a					: delete all containers and images
 	docker volume ls						: list all valume on the machine
 	docker run -v marivm:/var/lib/mysql mariadb: create/bind a volume for mariadb
+	docker run --network=<network name / id> ubuntu : run ubuntu on a specified network
 	docker volume create maria-vol			: create new volume
 	docker-compose down --rmi all			: clear docker-compose cache
 
 	docker cp <id>:/irc_server .			: copy a file from container to .
+	
+	NETWORK :
+		docker network create --driver (bridge / none / mcvlan / host / overlay) <name> : create a network
+		docker network create --driver bridge --subnet 172.25.0.0/16 <name> : create a network with subnet to start with
+		docker ntework ls	: list available networks
+		docker network inspect <name / id> : inspect a network
+		docker disconnect n2 <container name / id> : disconnect from the n2 network
+		docker connect n1 <container name / id>	   : connect to another network / switch to (n1) 
