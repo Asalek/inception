@@ -40,6 +40,22 @@ By isolating these different aspects of the system, Docker can provide a high le
 ## FAstCGI :
 	FastCGI (Fast Common Gateway Interface) is a protocol that allows a web server to interface with a standalone application or script that handles HTTP requests.
 
+## Docker Network
+- bridge:
+This is the default network type that is created when Docker is installed. Containers connected to the same bridge network can communicate with each other using IP addresses. By default, Docker assigns a unique IP address from the bridge network to each container.
+
+- host:
+When a container is connected to the host network, it shares the network namespace with the host. This means that the container can use the same network interface as the host and can communicate with other containers or services on the host network.
+
+- overlay:
+This network type is used for container communication across multiple Docker hosts. It creates a virtual network that spans multiple hosts and allows containers to communicate with each other using standard IP protocols.
+
+- macvlan:
+This network type allows containers to have their own unique MAC addresses, which can be useful for connecting containers to external networks or services.
+
+- none:
+When a container is connected to the none network, it has no access to any other network. This can be useful for running containers in complete isolation.
+
 ## Docker for Linux
 
 ```
@@ -82,7 +98,8 @@ By isolating these different aspects of the system, Docker can provide a high le
 
 	docker cp <id>:/irc_server .			: copy a file from container to .
 	
-	NETWORK :
+
+	- NETWORK :
 		docker network create --driver (bridge / none / mcvlan / host / overlay) <name> : create a network
 		docker network create --driver bridge --subnet 172.25.0.0/16 <name> : create a network with subnet to start with
 		docker ntework ls	: list available networks
