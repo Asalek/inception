@@ -1,0 +1,5 @@
+FROM debian:stretch
+
+RUN apt-get update && apt-get install php-fpm php-mysql -y
+
+CMD [ "php", "--version" ]

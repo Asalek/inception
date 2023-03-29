@@ -1,5 +1,12 @@
 version: '3.3'
 
+networks:
+  i-network:
+    ipam:
+      driver: default
+      config:
+      - subnet: 13.37.0.1/16
+
 services:
   mariadb_asalek:
     build:
@@ -11,14 +18,20 @@ services:
     restart: always
     env_file:
       - .env
+    networks:
+      - i-network
   nginx_asalek:
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile
     image: nginx
     restart: always
+    ports:
+      - 443:443
     depends_on:
       - mariadb_asalek
+    networks:
+      - i-network
 
   #restart : no always on-failure unless-stopped
   

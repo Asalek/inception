@@ -10,7 +10,7 @@ RUN apt-get update -y && apt upgrade -y && \
 	-out /etc/ssl/certs/asalek-cer.crt \
 	-subj "/CN=asalek.42.fr"
 
-COPY ./conf/x.conf /etc/nginx/sites-available/default
+COPY ./x.conf /etc/nginx/sites-available/default
 
 # openssl	: creating and managing OpenSSL certificates, keys, and other files.
 # req		: request a certificate 
