@@ -1,5 +1,15 @@
 version: '3.3'
 
+volumes:
+  mariadb_V:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/Users/asalek/maria_v'
+    labels:
+      my_label: 'mariaDb_v'
+
 networks:
   i-network:
     ipam:
@@ -14,7 +24,7 @@ services:
       dockerfile: Dockerfile
     image: mariadb
     volumes:
-      - ~/home/asalek/Desktop
+      - mariadb_V:/tmp/ #/home/login/data
     restart: always
     env_file:
       - .env
