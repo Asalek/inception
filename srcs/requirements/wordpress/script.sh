@@ -9,10 +9,10 @@ mv wp-cli.phar /usr/local/bin/wp
 
 mkdir -p /var/www/wordpress
 
-wp cli version
-
 cd /var/www/wordpress
 
+wp core download --allow-root
 
-#Since the web server needs to make changes to the folder, you must give NGINX the appropriate authorization:
+mv wp-config-sample.php wp-config.php
 
+sed -i "s/define( 'DB_USER'*/define( 'DB_NAME', '${db_name}' );" /var/www/wordpress/wp-config.php
