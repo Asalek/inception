@@ -1,5 +1,5 @@
 #base image : alpine is used for its small size and fast performance
-FROM debian:buster
+FROM debian:stretch
 
 #alpine package manager
 RUN apt-get update -y && apt upgrade -y && \
