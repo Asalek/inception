@@ -3,6 +3,12 @@ FROM debian:stretch
 RUN apt-get update && apt-get install \
 	php-fpm php-mysql curl -y
 
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+
+RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp && \
+	mkdir -p /var/www/wordpress && cd /var/www/wordpress && \
+	wp core download --allow-root
+
 COPY ./script.sh .
 
 RUN chmod +x script.sh
