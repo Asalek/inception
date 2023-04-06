@@ -1,18 +1,12 @@
-#!bin/bash
-
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-
-chmod +x wp-cli.phar
-
-# To make it available globally on the system, by typing wp command
-mv wp-cli.phar /usr/local/bin/wp
-
-mkdir -p /var/www/wordpress
+#!/bin/bash
 
 cd /var/www/wordpress
 
-wp core download --allow-root
-
 mv wp-config-sample.php wp-config.php
 
-sed -i "s/define( 'DB_USER'*/define( 'DB_NAME', '${db_name}' );" /var/www/wordpress/wp-config.php
+chmod 777 wp-config.php
+
+sed -i "s/database_name_here/$asalekDb/1" wp-config.php
+sed -i "s/password_here/$db_passwd/1" wp-config.php
+sed -i "s/username_here/$db_user/1" wp-config.php
+sed -i "s/localhost/mariadb/1" wp-config.php
