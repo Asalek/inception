@@ -9,6 +9,14 @@ volumes:
       device: '/Users/asalek/maria_v'
     labels:
       my_label: 'mariaDb_v'
+  wordpress_V:
+    driver: local
+    driver_opts:
+      type: 'none' #no storage driver should be used for this volume
+      o: 'bind'
+      device: '/Users/asalek/wordpress_v'
+    labels:
+      my_label: 'wordPress_v'
 
 networks:
   i-network:
@@ -22,7 +30,7 @@ services:
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
-    image: mariadb
+    # image: mariadb
     volumes:
       - mariadb_V:/tmp/ #/home/login/data
     restart: always
@@ -34,7 +42,7 @@ services:
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile
-    image: nginx
+    # image: nginx
     restart: always
     ports:
       - 443:443
@@ -42,6 +50,16 @@ services:
       - mariadb_asalek
     networks:
       - i-network
-
+  wordpress_asalek:
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+    # image: wordpress
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - mariadb_asalek
+    networks:
+      - i-network
   #restart : no always on-failure unless-stopped
-  
