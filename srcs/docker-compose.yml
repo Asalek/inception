@@ -27,10 +27,11 @@ networks:
 
 services:
   mariadb_asalek:
+    container_name: mariadb
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
-    # image: mariadb
+    image: mariadb
     volumes:
       - mariadb_V:/tmp/ #/home/login/data
     restart: always
@@ -42,7 +43,7 @@ services:
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile
-    # image: nginx
+    image: nginx
     restart: always
     ports:
       - 443:443
@@ -54,10 +55,12 @@ services:
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
-    # image: wordpress
+    image: wordpress
     restart: always
     env_file:
       - .env
+    volumes:
+      - wordpress_V:/tmp/wp
     depends_on:
       - mariadb_asalek
     networks:
