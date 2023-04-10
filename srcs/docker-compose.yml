@@ -51,6 +51,8 @@ services:
       - mariadb_asalek
     networks:
       - i-network
+    env_file:
+      - ./.env
   wordpress_asalek:
     build:
       context: ./requirements/wordpress
