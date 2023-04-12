@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sed -i "s/bind-address.*/bind-address=${ip_all}/" /etc/mysql/mariadb.conf.d/50-server.cnf
-sed -i "s/port.*/port=${$maria_port}/" /etc/mysql/mariadb.conf.d/50-server.cnf
+sed -i "s/#port.*/port=${maria_port}/" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 #-i :  modify the file in place
 #s/MY_VARIABLE=.*/MY_VARIABLE=${new_value}/     : matches any line in the file that starts with MY_VARIABLE= and replaces the entire line with MY_VARIABLE=new_value.
@@ -16,7 +16,7 @@ echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$db_root_passwd';" >> db
 echo "CREATE USER '$db_user'@'%' IDENTIFIED BY '$db_passwd';" >> db
 echo "GRANT ALL PRIVILEGES ON *.* TO '$db_user'@'%';" >> db
 echo "FLUSH PRIVILEGES;" >> db
-echo "EXIT;" >> db
+echo "EXIT" >> db
 
 mysql < db
 
