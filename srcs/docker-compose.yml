@@ -33,7 +33,7 @@ services:
       dockerfile: Dockerfile
     image: mariadb
     volumes:
-      - mariadb_V:/tmp/ #/home/login/data
+      - mariadb_V:/var/lib/mysql #/home/login/data
     restart: always
     env_file:
       - .env
