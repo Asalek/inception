@@ -9,25 +9,29 @@ sed -i "s/#port.*/port=${maria_port}/" /etc/mysql/mariadb.conf.d/50-server.cnf
 service mysql start
 sleep 5;
 
+if [ -f './db' ]; then
+
 touch db
 
-echo "CREATE DATABASE $db_name;" >> db
-echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$db_root_passwd';" >> db
-echo "CREATE USER '$db_user'@'%' IDENTIFIED BY '$db_passwd';" >> db
-echo "GRANT ALL PRIVILEGES ON *.* TO '$db_user'@'%';" >> db
-echo "FLUSH PRIVILEGES;" >> db
-echo "EXIT" >> db
+    echo "CREATE DATABASE $db_name;" >> db
+    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$db_root_passwd';" >> db
+    echo "CREATE USER '$db_user'@'%' IDENTIFIED BY '$db_passwd';" >> db
+    echo "GRANT ALL PRIVILEGES ON *.* TO '$db_user'@'%';" >> db
+    echo "FLUSH PRIVILEGES;" >> db
+    echo "EXIT" >> db
 
-mysql < db
+    mysql < db
 
-kill $(cat /var/run/mysqld/mysqld.pid)
-#The reason why you need to kill the MySQL PID before running mysqld_safe
-#is that mysqld_safe is a script that starts the MySQL server in the foreground
-# and monitors it for errors. If the server encounters an error or crashes,
-#mysqld_safe will attempt to restart it automatically.
-#if there is already a running instance of the MySQL server (as indicated by the PID file),
-#running mysqld_safe will likely fail, because it cannot start a new instance of the server while there is already one running.
-sleep 5;
+    kill $(cat /var/run/mysqld/mysqld.pid)
+    #The reason why you need to kill the MySQL PID before running mysqld_safe
+    #is that mysqld_safe is a script that starts the MySQL server in the foreground
+    # and monitors it for errors. If the server encounters an error or crashes,
+    #mysqld_safe will attempt to restart it automatically.
+    #if there is already a running instance of the MySQL server (as indicated by the PID file),
+    #running mysqld_safe will likely fail, because it cannot start a new instance of the server while there is already one running.
+    sleep 5;
+fi
 #The *.* wildcard notation implies that the user has permission to execute any task on any database in the database server.
 
-/usr/bin/mysqld_safe
+# /usr/bin/mytsqld_safe
+mysqld

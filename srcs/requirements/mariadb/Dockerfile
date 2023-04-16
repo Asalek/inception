@@ -1,5 +1,5 @@
 #stretch superseded buster superseded Bullseye
-FROM debian:stretch
+FROM debian:buster
 
 # ARG USER=asalek
 

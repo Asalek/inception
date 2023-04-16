@@ -3,25 +3,28 @@ export name=$(ls /etc/php/)
 
 cd /var/www/html
 
-mv wp-config-sample.php wp-config.php > /dev/null
+if [ -f './wp-config-sample.php' ]; then
 
-chmod 777 wp-config.php
+    mv wp-config-sample.php wp-config.php > /dev/null
 
-sed -i "s/database_name_here/$db_name/1" wp-config.php
-sed -i "s/password_here/$db_passwd/1" wp-config.php
-sed -i "s/username_here/$db_user/1" wp-config.php
-sed -i "s/localhost/mariadb/1" wp-config.php
+    chmod 777 wp-config.php
 
-wp core install --title=$wp_title \
-                --admin_user=$wp_admin \
-                --admin_password=$wp_admin_psswd \
-                --admin_email=$wp_admin_email \
-                --url=$db_host \
-                --allow-root
+    sed -i "s/database_name_here/$db_name/1" wp-config.php
+    sed -i "s/password_here/$db_passwd/1" wp-config.php
+    sed -i "s/username_here/$db_user/1" wp-config.php
+    sed -i "s/localhost/mariadb/1" wp-config.php
 
-wp user create $wp_user $wp_email --role=author --user_pass=$wp_psswd --allow-root
+    wp core install --title=$wp_title \
+                    --admin_user=$wp_admin \
+                    --admin_password=$wp_admin_psswd \
+                    --admin_email=$wp_admin_email \
+                    --url=$db_host \
+                    --allow-root
 
-sed -i "s/listen = \/run\/php\/php$name-fpm.sock/listen = 9000/1" /etc/php/$name/fpm/pool.d/www.conf
+    wp user create $wp_user $wp_email --role=author --user_pass=$wp_psswd --allow-root
+    sed -i "s/listen = \/run\/php\/php$name-fpm.sock/listen = 9000/1" /etc/php/$name/fpm/pool.d/www.conf
+
+fi
 
 # the /run/php used by PHP-FPM to store process Id.
 mkdir -p /run/php
