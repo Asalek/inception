@@ -62,7 +62,7 @@ services:
     env_file:
       - .env
     volumes:
-      - wordpress_V:/tmp/wp
+      - wordpress_V:/var/www/html
     depends_on:
       - mariadb_asalek
     networks:
