@@ -26,6 +26,7 @@ if [ -f './wp-config-sample.php' ]; then
 
 fi
 
+wp theme install twentysixteen --activate --allow-root
 # the /run/php used by PHP-FPM to store process Id.
 mkdir -p /run/php
 
