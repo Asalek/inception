@@ -10,14 +10,14 @@ service mysql start
 
 touch db
 
-echo "CREATE DATABASE $db_name;" >> db
-echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '1234';" >> db
-echo "CREATE USER '$db_user'@'%' IDENTIFIED BY '$db_passwd';" >> db
-echo "GRANT ALL PRIVILEGES ON *.* TO '$db_user'@'%';" >> db
-echo "FLUSH PRIVILEGES;" >> db
-echo "EXIT" >> db
+    echo "CREATE DATABASE $db_name;" >> db
+    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$db_root_passwd';" >> db
+    echo "CREATE USER '$db_user'@'%' IDENTIFIED BY '$db_passwd';" >> db
+    echo "GRANT ALL PRIVILEGES ON *.* TO '$db_user'@'%';" >> db
+    echo "FLUSH PRIVILEGES;" >> db
+    echo "EXIT" >> db
 
-mysql < db
+    mysql < db
 
 kill $(cat /var/run/mysqld/mysqld.pid)
 #The reason why you need to kill the MySQL PID before running mysqld_safe
