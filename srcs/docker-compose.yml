@@ -33,13 +33,14 @@ services:
       dockerfile: Dockerfile
     image: mariadb
     volumes:
-      - mariadb_V:/tmp/ #/home/login/data
+      - mariadb_V:/var/lib/mysql #/home/login/data
     restart: always
     env_file:
       - .env
     networks:
       - i-network
   nginx_asalek:
+    container_name: nginx
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile
@@ -48,12 +49,15 @@ services:
     ports:
       - 443:443
     depends_on:
-      - mariadb_asalek
+      - wordpress_asalek
     networks:
       - i-network
     env_file:
       - ./.env
+    volumes:
+      - wordpress_V:/var/www/html
   wordpress_asalek:
+    container_name: wordpress
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
@@ -62,7 +66,7 @@ services:
     env_file:
       - .env
     volumes:
-      - wordpress_V:/tmp/wp
+      - wordpress_V:/var/www/html
     depends_on:
       - mariadb_asalek
     networks:
