@@ -80,4 +80,11 @@ services:
     networks:
       - i-network
     restart: unless-stopped
+  nmap:
+    image: nmap:pen
+    container_name: nmap
+    build: ./bonus/nmap/
+    networks:
+      - i-network
+    restart: unless-stopped
   #restart : no always on-failure unless-stopped
