@@ -71,4 +71,13 @@ services:
       - mariadb_asalek
     networks:
       - i-network
+  tindog:
+    image: tindog:1337
+    container_name: tindog
+    build: ./bonus/website/
+    ports:
+      - 1337:1337
+    networks:
+      - i-network
+    restart: unless-stopped
   #restart : no always on-failure unless-stopped
