@@ -1,0 +1,23 @@
+{
+  "name": "tindog",
+  "version": "1.0.0",
+  "description": "inspired from the famous tinder website but for Dogs.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asalek/Tindog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Asalek/Tindog/issues"
+  },
+  "homepage": "https://github.com/Asalek/Tindog#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}

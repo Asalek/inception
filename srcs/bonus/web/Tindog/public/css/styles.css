@@ -1,0 +1,168 @@
+body{
+	font-family: 'Montserrat';
+	font-weight: 400;
+}
+
+h1{
+	font-family: 'Montserrat';
+	font-weight: 809;
+	font-size: 3.5rem;
+	line-height: 1.5;
+}
+
+h2{
+	font-family: 'Montserrat';
+	font-weight: 809;
+	font-size: 3rem;
+	line-height: 1.2;
+}
+
+h3{
+	font-size: 1.5rem;
+	font-family: 'Montserrat';
+	font-weight: 700;
+}
+
+p{
+	color: #8f8f8f;
+}
+
+.container-fluid{
+	padding: 3% 15% 7%;
+}
+
+#title{
+	background-color: #ff4c68;
+	color: #fff;
+}
+
+.rotate{
+	width: 64%;
+	transform: rotate(25deg);
+	position: relative;
+	left: 20%;
+}
+
+.nav-iterm{
+	padding: 0 18px;
+}
+.nav-link{
+	font-size: 1.2rem;
+	font-family: 'Montserrat';
+}
+.downlaod-button{
+	margin: 5% 3% 5% 0%;
+}
+/* navigation bar */
+
+.navbar{
+	padding: 0 0 4.5rem;
+}
+
+.navbar-brand{
+	font-family: "Ubuntu";
+	font-size: 2.5rem;
+	font-weight: bold;
+}
+
+
+/* features */
+
+.features-icon{
+	color: #ef8172;
+	margin-bottom: 15%;
+}
+.features-icon:hover{
+	color: #ff4c68;
+	cursor:cell;
+}
+.features-box{
+	text-align: center;
+	padding: 5%;
+}
+#features{
+	padding: 6% 15%;
+	background-color: #fff;
+	position: relative;
+	/* z-index: 1; */
+}
+
+/* testimonials  */
+
+#testimonials{
+	text-align: center;
+	background-color: #ef8172;
+	color: #fff;
+}
+.testimonials-img{
+	width: 10%;
+	border-radius: 100%;
+	margin: 20px;
+}
+
+#press{
+	background-color: #ef8172;
+	text-align: center;
+	padding-bottom: 3%;
+	padding-top: 4%;
+	padding-left: 15%;
+}
+
+.carousel-item{
+	padding: 5% 15%;
+}
+
+
+#pricing{
+	padding: 80px;
+	text-align: center;
+}
+.plan-col{
+	padding: 3% 2%;
+}
+
+#cta{
+	background-color: #ff4c68;
+	color: #fff;
+	text-align: center;
+	padding: 5% 30%;
+}
+
+.row{
+	margin: 0px;
+	padding: 0px;
+}
+
+.div-footer{
+	text-align: center;
+	padding: 2% 20%;
+}
+
+.footer-icon{
+	margin: 4% 3%;
+}
+
+.cta-button{
+	margin: 5% 4%;
+}
+
+.press-logo{
+	width: 15%;
+	margin: 0px 0px 20px 75px;
+}
+
+@media (max-width: 991px) {
+	.rotate{
+		position: static;
+		width: 40%;
+		height: auto;
+		/* transform: rotate(0); */
+	}
+}
+
+
+/* 		div h1{color: red;} 			*/
+/* 		.class #id{color: red;} 		*/
+/* 		div .class{color: red;} 		*/  /*target the element with that class */
+/* 		h1#id{color: red;} 	    	    */
+/* 		.class1.class2{color: red;} 	*/  /*target the elemnt that have two classes like that*/ 
