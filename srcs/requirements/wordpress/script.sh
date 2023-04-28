@@ -24,9 +24,18 @@ if [ -f './wp-config-sample.php' ]; then
     wp user create $wp_user $wp_email --role=author --user_pass=$wp_psswd --allow-root
     sed -i "s/listen = \/run\/php\/php$name-fpm.sock/listen = 9000/1" /etc/php/$name/fpm/pool.d/www.conf
 
+    sed -i '60i\
+    define( 'WP_REDIS_HOST', 'redis' );\
+    define( 'WP_REDIS_PORT', 6379 );\
+    define('WP_CACHE', true);' wp-config.php
+
 fi
 
+wp plugin update --all --allow-root
+wp plugin install redis-cache --activate --allow-root
 wp theme install twentysixteen --activate --allow-root
+
+wp redis enable --allow-root
 # the /run/php used by PHP-FPM to store process Id.
 mkdir -p /run/php
 
