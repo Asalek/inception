@@ -87,4 +87,15 @@ services:
     networks:
       - i-network
     restart: unless-stopped
+  redis:
+    image: redis
+    container_name: redis
+    build: ./bonus/redis/
+    volumes:
+      - wordpress_V:/var/www/html
+    networks:
+      - i-network
+    depends_on:
+      - wordpress_asalek
+    restart: unless-stopped
   #restart : no always on-failure unless-stopped
