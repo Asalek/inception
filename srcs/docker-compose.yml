@@ -17,6 +17,14 @@ volumes:
       device: '/Users/asalek/data/wordpress_v'
     labels:
       my_label: 'wordPress_v'
+  nmap_V:
+    driver: local
+    driver_opts:
+      type: 'none' #no storage driver should be used for this volume
+      o: 'bind'
+      device: '/Users/asalek/data/nmap_v'
+    labels:
+      my_label: 'nmap_v'
 
 networks:
   i-network:
@@ -74,13 +82,15 @@ services:
   tindog:
     image: tindog:1337
     container_name: tindog
-    build: ./bonus/website/
+    build: ./bonus/web/
     ports:
       - 1337:1337
     networks:
       - i-network
     restart: unless-stopped
   nmap:
+    volumes:
+      - nmap_V:/scan_result/
     image: nmap:pen
     container_name: nmap
     build: ./bonus/nmap/
