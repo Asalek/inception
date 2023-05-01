@@ -1,5 +1,9 @@
 FROM debian:buster
 
-RUN apt update && apt install nmap -y
+RUN apt update && apt install nmap -y && mkdir scan_result
 
-CMD nmap 13.37.0.2-5
+COPY ./n_script.sh n_script.sh
+
+RUN chmod 777 n_script.sh
+
+CMD bash n_script.sh
