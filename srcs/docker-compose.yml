@@ -108,4 +108,15 @@ services:
     depends_on:
       - wordpress_asalek
     restart: unless-stopped
+  adminer:
+    image: adminer
+    container_name: adminer
+    build: ./bonus/adminer/
+    networks:
+      - i-network
+    ports:
+      - 1025:1025
+    depends_on:
+      - mariadb_asalek
+    restart: unless-stopped
   #restart : no always on-failure unless-stopped
