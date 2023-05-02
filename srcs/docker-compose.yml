@@ -119,4 +119,20 @@ services:
     depends_on:
       - mariadb_asalek
     restart: unless-stopped
+  ftp:
+    image: ftp
+    container_name: ftp
+    build: ./bonus/ftp/
+    networks:
+      - i-network
+    ports:
+      - "21:21"
+      - "20000-20010:20000-20010"
+    depends_on:
+      - wordpress_asalek
+    env_file:
+      - .env
+    volumes:
+      - wordpress_V:/var/www/html
+    restart: unless-stopped
   #restart : no always on-failure unless-stopped
