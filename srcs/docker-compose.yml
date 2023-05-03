@@ -6,7 +6,7 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/Users/asalek/data/maria_v'
+      device: '/home/asalek/data/maria_v'
     labels:
       my_label: 'mariaDb_v'
   wordpress_V:
@@ -14,7 +14,7 @@ volumes:
     driver_opts:
       type: 'none' #no storage driver should be used for this volume
       o: 'bind'
-      device: '/Users/asalek/data/wordpress_v'
+      device: '/home/asalek/data/wordpress_v'
     labels:
       my_label: 'wordPress_v'
   nmap_V:
@@ -22,7 +22,7 @@ volumes:
     driver_opts:
       type: 'none' #no storage driver should be used for this volume
       o: 'bind'
-      device: '/Users/asalek/data/nmap_v'
+      device: '/home/asalek/data/nmap_v'
     labels:
       my_label: 'nmap_v'
 
